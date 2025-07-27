@@ -87,6 +87,14 @@
     padding-bottom: 17px;
     background: rgba(0, 0, 0, 0.6);
   }
+
+.header_skills:hover {
+  box-shadow: 0 0 20px 5px #c7c4c4;
+  background: rgba(30, 30, 30, 0.85);
+  transition: box-shadow 0.3s, background 0.3s;
+  z-index: 2;
+  position: relative;
+}
   
   .header_skills ul {
     list-style-type: none;
