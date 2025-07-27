@@ -1,10 +1,12 @@
-# Portfólio Simples (sem projetos)
+# Página de Apresentação Pessoal
 
-portfólio criado com conceitos básicos de html e css.
+Esta é uma página simples que desenvolvi em 2021 utilizando apenas conceitos fundamentais de HTML e CSS.
 
-## Feito Com:
+## Tecnologias Utilizadas
 
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
+[![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
+[![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
 
-<p align="center">Copyright © 2021 Gabriel Matozo</p>
+---
+
+<p align="center">© 2021 Gabriel Matozo. Todos os direitos reservados.</p>
