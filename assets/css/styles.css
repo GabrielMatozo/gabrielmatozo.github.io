@@ -4,6 +4,15 @@
     border: none;
     box-sizing: border-box;
   }
+
+body {
+  animation: fadeInBody 1.2s ease;
+}
+
+@keyframes fadeInBody {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
   
   html, body {
     width: 100%;
@@ -11,6 +20,10 @@
     font-family: "Raleway", sans-serif;
     text-shadow: 0px 1px 0px #000;
     background-image: url(/assets/images/graysky.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
   
   .header {
@@ -86,7 +99,20 @@
     margin: 10px;
     padding-bottom: 17px;
     background: rgba(0, 0, 0, 0.6);
+    animation: fadeInUp 1s ease;
+    animation-fill-mode: both;
   }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 .header_skills:hover {
   box-shadow: 0 0 20px 5px #c7c4c4;
@@ -168,11 +194,29 @@
     }
     .header_skills {
       width: 90%;
+      min-width: 220px;
+      font-size: 0.95rem;
     }
     .header_title,
     .header_sub {
       margin: 0px;
       text-align: left;
+    }
+    .description {
+      font-size: 15px;
+      line-height: 22px;
+    }
+    .header_contact {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-right: 0;
+    }
+    .header_text {
+      margin-left: 0;
+      padding: 5px;
+    }
+    footer {
+      font-size: 0.8rem;
     }
   }
   
@@ -193,10 +237,21 @@
     }
     .header_contact {
       margin-right: 50px;
+      flex-direction: row;
+      align-items: flex-end;
     }
     footer {
       position: relative;
       bottom: 0px;
+    }
+    .header_skills {
+      width: 95%;
+      min-width: 220px;
+      font-size: 1rem;
+    }
+    .description {
+      font-size: 16px;
+      line-height: 23px;
     }
   }
   
