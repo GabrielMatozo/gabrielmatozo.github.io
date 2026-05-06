@@ -1,12 +1,53 @@
-# Página de Apresentação Pessoal
+# Gabriel Matozo — Portfólio
 
-Esta é uma página simples que desenvolvi em 2021 utilizando apenas conceitos fundamentais de HTML e CSS.
+Portfólio pessoal desenvolvido com HTML5, CSS3 e JavaScript puro. Zero dependências externas.
 
-## Tecnologias Utilizadas
+**[gabrielmatozo.github.io](https://gabrielmatozo.github.io)**
 
-[![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
-[![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
+## Sobre
 
----
+Site estático hospedado no GitHub Pages, construído do zero sem frameworks. Apresenta minha trajetória profissional em Segurança da Informação e Desenvolvimento Backend.
 
-<p align="center">© 2021 Gabriel Matozo. Todos os direitos reservados.</p>
+## Recursos
+
+- **Tema dark/light** com persistência em `localStorage`
+- **Internacionalização** — Português, Inglês e Espanhol
+- **Projetos dinâmicos** carregados via GitHub API
+- **Formulário de contato** integrado ao Formspree
+- **Download de CV** em PDF
+- **Layout responsivo** para mobile, tablet e desktop
+- **Página 404** customizada com efeito glitch
+- **Animações** — typing effect, scroll reveal, particle system (canvas), card tilt
+- **Acessibilidade** — aria-labels, focus-visible, keyboard navigation
+
+## Stack
+
+HTML5 · CSS3 · JavaScript (Vanilla) · GitHub Pages · Formspree
+
+## Estrutura
+
+```
+├── index.html              # Página principal
+├── 404.html                # Página de erro
+├── .nojekyll               # Desativa Jekyll no GitHub Pages
+├── .gitignore
+└── assets/
+    ├── css/styles.css      # Estilos com CSS variables
+    ├── js/
+    │   ├── config.js       # Configuração (GitHub user, CV URL)
+    │   ├── i18n.js         # Traduções PT/EN/ES
+    │   └── main.js         # Lógica do site
+    ├── images/favicon.svg
+    └── docs/gabriel-matozo-cv.pdf
+```
+
+## Como usar
+
+1. Fork ou clone o repositório
+2. Edite `assets/js/config.js` com seu GitHub user e URL do CV
+3. Edite `assets/js/i18n.js` com seus dados pessoais nos 3 idiomas
+4. Faça deploy no GitHub Pages
+
+## Licença
+
+MIT
