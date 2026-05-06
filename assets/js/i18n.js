@@ -381,9 +381,14 @@
     }
   };
 
+  function getBrowserLanguage() {
+    var lang = (navigator.language || '').split('-')[0];
+    return translations[lang] ? lang : DEFAULT_LANG;
+  }
+
   function initLanguage() {
     var saved = localStorage.getItem(LANG_KEY);
-    window.currentLanguage = saved && translations[saved] ? saved : DEFAULT_LANG;
+    window.currentLanguage = saved && translations[saved] ? saved : getBrowserLanguage();
   }
 
   function updateTranslations() {
