@@ -37,6 +37,7 @@
 </head>
 
 <body>
+    <a href="#hero" class="skip-link" data-i18n="skip_link">Pular para conteúdo</a>
     <div class="preloader" id="preloader">
     <div class="preloader__content">
       <span class="preloader__logo">&lt;GM /&gt;</span>
@@ -91,7 +92,7 @@
     <div class="hero__content">
       <p class="hero__greeting" data-i18n="hero_greeting">Olá, eu sou</p>
       <h1 class="hero__name">Gabriel Matozo</h1>
-      <div class="hero__typing-wrapper">
+      <div class="hero__typing-wrapper" aria-hidden="true">
         <span id="typing-text"></span>
         <span class="hero__cursor">|</span>
       </div>
@@ -100,7 +101,7 @@ Automação de investigações, resposta a incidentes e compliance (BACEN/LGPD).
       <div class="hero__actions">
         <a href="#contact" class="btn btn--primary" data-i18n="hero_contact">Entre em contato</a>
         <a href="#projects" class="btn btn--outline" data-i18n="hero_projects">Ver projetos</a>
-        <a href="#" id="cv-download-btn" class="btn btn--ghost" data-i18n="hero_cv">Download CV</a>
+        <a href="/assets/docs/gabriel-matozo-cv.pdf" id="cv-download-btn" class="btn btn--ghost" data-i18n="hero_cv" target="_blank" rel="noopener noreferrer">Download CV</a>
       </div>
       <div class="hero__social">
         <a href="https://github.com/gabrielmatozo" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="hero__social-link">
@@ -407,7 +408,7 @@ Automação de investigações, resposta a incidentes e compliance (BACEN/LGPD).
             <span data-i18n="form_submit">Enviar mensagem</span>
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
           </button>
-          <p class="form-status" id="form-status"></p>
+          <p class="form-status" id="form-status" aria-live="polite"></p>
         </form>
       </div>
     </div>

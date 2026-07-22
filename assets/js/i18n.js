@@ -126,6 +126,7 @@
 
       aria_open_menu: 'Abrir menu',
       aria_close_menu: 'Fechar menu',
+      skip_link: 'Pular para conteúdo',
 
       footer_copyright: '© 2026 Gabriel Matozo. Todos os direitos reservados.',
     },
@@ -251,6 +252,7 @@
 
       aria_open_menu: 'Open menu',
       aria_close_menu: 'Close menu',
+      skip_link: 'Skip to content',
 
       footer_copyright: '© 2026 Gabriel Matozo. All rights reserved.',
     },
@@ -376,6 +378,7 @@
 
       aria_open_menu: 'Abrir menú',
       aria_close_menu: 'Cerrar menú',
+      skip_link: 'Saltar al contenido',
 
       footer_copyright: '© 2026 Gabriel Matozo. Todos los derechos reservados.',
     }

@@ -27,16 +27,10 @@
     });
   }
 
-  // CV Download Button (hidden when URL is not configured)
+  // CV Download Button (hide when URL not configured)
   var cvDownloadBtn = document.getElementById('cv-download-btn');
-  if (cvDownloadBtn && window.PORTFOLIO_CONFIG) {
-    if (window.PORTFOLIO_CONFIG.cvUrl) {
-      cvDownloadBtn.href = window.PORTFOLIO_CONFIG.cvUrl;
-      cvDownloadBtn.setAttribute('target', '_blank');
-      cvDownloadBtn.setAttribute('rel', 'noopener noreferrer');
-    } else {
-      cvDownloadBtn.style.display = 'none';
-    }
+  if (cvDownloadBtn && window.PORTFOLIO_CONFIG && !window.PORTFOLIO_CONFIG.cvUrl) {
+    cvDownloadBtn.style.display = 'none';
   }
 
   // Preloader
@@ -74,16 +68,26 @@
       cursorFollower.classList.toggle('cursor-follower--hover', Boolean(isInteractive));
     });
 
+    var followerRAF = null;
+
     function animateFollower() {
       followerX += (mouseX - followerX) * 0.12;
       followerY += (mouseY - followerY) * 0.12;
       cursorFollower.style.left = followerX + 'px';
       cursorFollower.style.top = followerY + 'px';
-      requestAnimationFrame(animateFollower);
+      followerRAF = requestAnimationFrame(animateFollower);
     }
     animateFollower();
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden && followerRAF) {
+        cancelAnimationFrame(followerRAF);
+        followerRAF = null;
+      } else if (!document.hidden && !followerRAF) {
+        followerRAF = requestAnimationFrame(animateFollower);
+      }
+    });
   } else {
-    document.documentElement.classList.remove('has-custom-cursor');
     if (cursor) cursor.style.display = 'none';
     if (cursorFollower) cursorFollower.style.display = 'none';
   }
@@ -117,13 +121,42 @@
     navOverlay.className = 'nav__overlay';
     document.body.appendChild(navOverlay);
 
+    var lastFocusedEl = null;
+
+    function getFocusableElements() {
+      return navMenu.querySelectorAll('a, button, select, [tabindex]:not([tabindex="-1"])');
+    }
+
+    function trapFocus(e) {
+      if (e.key === 'Escape') {
+        closeMenu();
+        return;
+      }
+      if (e.key !== 'Tab') return;
+      var focusable = getFocusableElements();
+      if (focusable.length === 0) return;
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+
     function openMenu() {
+      lastFocusedEl = document.activeElement;
       navToggle.classList.add('nav__toggle--active');
       navToggle.setAttribute('aria-expanded', 'true');
       navToggle.setAttribute('aria-label', window.i18n.t('aria_close_menu'));
       navMenu.classList.add('nav__menu--open');
       navOverlay.classList.add('nav__overlay--visible');
       document.body.style.overflow = 'hidden';
+      document.addEventListener('keydown', trapFocus);
+      var firstLink = navMenu.querySelector('.nav__link');
+      if (firstLink) firstLink.focus();
     }
 
     function closeMenu() {
@@ -133,6 +166,11 @@
       navMenu.classList.remove('nav__menu--open');
       navOverlay.classList.remove('nav__overlay--visible');
       document.body.style.overflow = '';
+      document.removeEventListener('keydown', trapFocus);
+      if (lastFocusedEl) {
+        lastFocusedEl.focus();
+        lastFocusedEl = null;
+      }
     }
 
     navToggle.addEventListener('click', function () {
@@ -203,7 +241,8 @@
 
   if (backToTop) {
     backToTop.addEventListener('click', function () {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
     });
   }
 
@@ -497,8 +536,6 @@
     var connectionDistance = 120;
     var mouse = { x: null, y: null };
     var animationId = null;
-    var isDesktop = isPointerFine;
-
     function resizeCanvas() {
       var oldW = canvas.width;
       var oldH = canvas.height;
@@ -515,7 +552,7 @@
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    if (isDesktop) {
+    if (isPointerFine) {
       window.addEventListener('mousemove', function (e) {
         mouse.x = e.clientX;
         mouse.y = e.clientY;
