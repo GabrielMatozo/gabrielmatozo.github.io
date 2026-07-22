@@ -1,24 +1,24 @@
 # Gabriel Matozo — Portfólio
 
-Portfólio pessoal desenvolvido com HTML5, CSS3 e JavaScript puro. Zero dependências externas.
+Portfólio pessoal — site estático HTML/CSS/JS puro, zero frameworks. Hospedado no GitHub Pages.
 
 **[gabrielmatozo.github.io](https://gabrielmatozo.github.io)**
 
 ## Sobre
 
-Site estático hospedado no GitHub Pages, construído do zero sem frameworks. Apresenta minha trajetória profissional em Segurança da Informação e Desenvolvimento Backend.
+Site que apresenta minha trajetória profissional em Cibersegurança (análise de riscos, prevenção a fraudes, resposta a incidentes) e Desenvolvimento Backend. Construído do zero.
 
 ## Recursos
 
-- **Tema dark/light** com persistência em `localStorage`
+- **Tema dark/light** com persistência em `localStorage` + `prefers-color-scheme`
 - **Internacionalização** — Português, Inglês e Espanhol
-- **Projetos dinâmicos** carregados via GitHub API
-- **Formulário de contato** integrado ao Formspree
-- **Download de CV** em PDF
-- **Layout responsivo** para mobile, tablet e desktop
+- **Projetos dinâmicos** carregados via GitHub API com cache em `sessionStorage`
+- **Formulário de contato** via Formspree com honeypot anti-spam
+- **Download de CV** em PDF (funciona sem JS)
+- **Layout responsivo** — mobile, tablet e desktop
 - **Página 404** customizada com efeito glitch
 - **Animações** — typing effect, scroll reveal, particle system (canvas), card tilt
-- **Acessibilidade** — aria-labels, focus-visible, keyboard navigation
+- **Acessibilidade** — `prefers-reduced-motion`, skip-to-content, focus trap no menu mobile, `aria-live` em conteúdo dinâmico, contraste WCAG AA, `:focus-visible`
 
 ## Stack
 
@@ -30,15 +30,19 @@ HTML5 · CSS3 · JavaScript (Vanilla) · GitHub Pages · Formspree
 ├── index.html              # Página principal
 ├── 404.html                # Página de erro
 ├── .nojekyll               # Desativa Jekyll no GitHub Pages
+├── sitemap.xml
 ├── .gitignore
 └── assets/
-    ├── css/styles.css      # Estilos com CSS variables
+    ├── css/styles.css      # Estilos com CSS custom properties
     ├── js/
     │   ├── config.js       # Configuração (GitHub user, CV URL)
     │   ├── i18n.js         # Traduções PT/EN/ES
     │   └── main.js         # Lógica do site
-    ├── images/favicon.svg
-    └── docs/gabriel-matozo-cv.pdf
+    ├── images/
+    │   ├── favicon.svg
+    │   └── og-cover.png    # Open Graph image
+    └── docs/
+        └── gabriel-matozo-cv.pdf
 ```
 
 ## Como usar
