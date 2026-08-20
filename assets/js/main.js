@@ -412,7 +412,8 @@
         var priority = ['backendjwt', 'chalice-jwt-auth-api-estudo', 'questionnaire-manager', 'api-flask-ultra-simples'];
 
         var filtered = repos.filter(function (r) {
-          return !r.fork && !r.archived && r.name !== GITHUB_USER + '.github.io';
+          var hidden = ['School-Guardian-Backend', 'School-Guardian-Frontend', 'Devops'];
+          return !r.fork && !r.archived && hidden.indexOf(r.name) === -1 && r.name !== GITHUB_USER + '.github.io';
         }).sort(function (a, b) {
           var pa = priority.indexOf(a.name);
           var pb = priority.indexOf(b.name);
