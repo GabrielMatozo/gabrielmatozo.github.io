@@ -395,7 +395,7 @@
 
     var promise = cached
       ? Promise.resolve(cached)
-      : fetch('https://api.github.com/users/' + GITHUB_USER + '/repos?sort=updated&per_page=6&type=owner')
+      : fetch('https://api.github.com/users/' + GITHUB_USER + '/repos?sort=updated&per_page=100&type=owner')
           .then(function (res) {
             if (!res.ok) throw new Error('GitHub API error');
             return res.json();
@@ -409,8 +409,19 @@
         var loading = document.getElementById('projects-loading');
         if (loading) loading.remove();
 
+        var priority = ['backendjwt', 'chalice-jwt-auth-api-estudo', 'questionnaire-manager', 'api-flask-ultra-simples'];
+
         var filtered = repos.filter(function (r) {
-          return !r.fork && r.name !== GITHUB_USER + '.github.io';
+          return !r.fork && !r.archived && r.name !== GITHUB_USER + '.github.io';
+        }).sort(function (a, b) {
+          var pa = priority.indexOf(a.name);
+          var pb = priority.indexOf(b.name);
+          if (pa !== -1 || pb !== -1) {
+            var ra = pa === -1 ? 99 : pa;
+            var rb = pb === -1 ? 99 : pb;
+            if (ra !== rb) return ra - rb;
+          }
+          return new Date(b.updated_at) - new Date(a.updated_at);
         }).slice(0, 6);
 
         if (filtered.length === 0) {
