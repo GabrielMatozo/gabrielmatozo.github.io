@@ -389,7 +389,7 @@
   }
 
   function fetchProjects() {
-    var cacheKey = 'gh-repos-' + GITHUB_USER;
+    var cacheKey = 'gh-repos-v2-' + GITHUB_USER;
     var cached = null;
     try { cached = JSON.parse(sessionStorage.getItem(cacheKey)); } catch (e) { /* ignore */ }
 
